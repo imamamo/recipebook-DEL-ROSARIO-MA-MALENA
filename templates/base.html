@@ -13,7 +13,7 @@
     </head>
     <body>
         <h1>
-            <a href={% url 'ledger:recipes' %}>Recipe Book</a>
+            <a href="/recipes/list">Recipe Book</a>
         </h1>
         {% if request.user.is_authenticated %}
             <form action="{% url 'logout' %}" method="post">
@@ -21,9 +21,9 @@
                 <button type="submit">Logout</button>
             </form>
         {% else %}
-            {% if request.get_full_path != '/accounts/login/' %}
-                <a href={% url 'login' %}>Login</a>
-            {% endif %}
+            <form action="{% url 'login' %}" method="get">
+                <button type="submit">Login</button>
+            </form>
         {% endif %}
         <div id="content">
             {% block content %}
